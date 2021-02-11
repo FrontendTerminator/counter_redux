@@ -5,9 +5,6 @@ import {SetScreen} from "./ui/setScreen";
 
 
 function App() {
-
-
-
   return (
       <div>
         <GeneralScreen/>

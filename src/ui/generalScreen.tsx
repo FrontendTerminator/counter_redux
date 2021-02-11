@@ -1,12 +1,12 @@
 import React from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {RootStateStoreType} from "../bll/store";
-import {incrementScreenValueAC, resetScreenValueAC} from "../bll/counter_reducer";
+import {incrementScreenValueAC, resetScreenValueAC, useDispatch} from "../bll/actions";
 
 export function GeneralScreen() {
 
     const scoreValue = useSelector<RootStateStoreType, number>( state => state.counterData.scoreValue)
-    const dispatch = useDispatch()
+    const dispatch = useDispatch() // custom dispatch from action.ts
 
     return(
         <div>

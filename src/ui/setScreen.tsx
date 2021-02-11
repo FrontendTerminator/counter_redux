@@ -1,13 +1,14 @@
 import React, {ChangeEvent} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {RootStateStoreType} from "../bll/store";
-import {changeInputMaxValueAC, changeInputMinValueAC} from "../bll/counter_reducer";
+import {changeInputMaxValueAC, changeInputMinValueAC, useDispatch} from "../bll/actions";
 
 
 export function SetScreen () {
 
-    const counterData = useSelector<RootStateStoreType, any>(state => state.counterData)
-    const dispatch = useDispatch()
+    const maxValue = useSelector<RootStateStoreType, number>(state => state.counterData.maxValue)
+    const minValue = useSelector<RootStateStoreType, number>(state => state.counterData.minValue)
+    const dispatch = useDispatch() // custom dispatch from action.ts
 
     const readInputMaxValue = (e: ChangeEvent<HTMLInputElement>) => {
         const value = e.currentTarget.valueAsNumber
@@ -25,7 +26,7 @@ export function SetScreen () {
             <div>
                 <div>
                     <span>max value<input
-                        value={counterData.maxValue}
+                        value={maxValue}
                         type={"number"}
                         onChange={readInputMaxValue}
                     />
@@ -33,7 +34,7 @@ export function SetScreen () {
                 </div>
                 <div>
                     <span>start value<input
-                        value={counterData.minValue}
+                        value={minValue}
                         type={"number"}
                         onChange={readInputMinValue}
                     />
