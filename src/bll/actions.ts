@@ -4,11 +4,12 @@ export enum ACTION_TYPE {
     INCREMENT_SCREEN_VALUE = 'INCREMENT-SCREEN-VALUE',
     RESET_SCREEN_VALUE = 'RESET-SCREEN-VALUE',
     CHANGE_INPUT_MAX_VALUE = 'READ-INPUT-MAX-VALUE',
-    CHANGE_INPUT_MIN_VALUE = 'READ-INPUT-MIN-VALUE'
+    CHANGE_INPUT_MIN_VALUE = 'READ-INPUT-MIN-VALUE',
+    CHANGE_MAIN_DISPLAY = 'CHANGE-MAIN-DISPLAY'
 }
 
 export type CounterReducerActionType = IncrementScreenValueACType | ResetScreenValueACType |
-    ChangeInputMaxValueACType | ChangeInputMinValueACType
+    ChangeInputMaxValueACType | ChangeInputMinValueACType | ChangeMainDisplayType
 
 type IncrementScreenValueACType = {
     type: ACTION_TYPE.INCREMENT_SCREEN_VALUE
@@ -39,7 +40,18 @@ type ChangeInputMinValueACType = {
 export const changeInputMinValueAC = (newInputMinValue: number): ChangeInputMinValueACType => {
     return {type: ACTION_TYPE.CHANGE_INPUT_MIN_VALUE, newInputMinValue}
 }
+type ChangeMainDisplayType = {
+    type: ACTION_TYPE.CHANGE_MAIN_DISPLAY
+    value: boolean
+}
+export const changeMainDisplay = (value: boolean): ChangeMainDisplayType => {
+   return {type: ACTION_TYPE.CHANGE_MAIN_DISPLAY, value}
+}
 
+
+
+
+// custom dispatch with typesation
 export function useDispatch () {
     const dispatch = _useDispatch()
     return (action: CounterReducerActionType) => dispatch(action)
