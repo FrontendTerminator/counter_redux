@@ -7,13 +7,10 @@ export type CounterReducerStateType = {
     mainDisplayValue: boolean
 }
 
-const numberMaxValue = Number(localStorage.getItem('maxValue'))
-const numberMinValue = Number(localStorage.getItem('minValue'))
-
 let initialState: CounterReducerStateType = {
     scoreValue: 0,
-    maxValue: numberMaxValue,
-    minValue: numberMinValue,
+    maxValue: 5,
+    minValue: 0,
     mainDisplayValue: true
 }
 
@@ -41,7 +38,8 @@ export const counterReducer = (state: CounterReducerStateType = initialState, ac
         case ACTION_TYPE.CHANGE_INPUT_MIN_VALUE: {
             return {
                 ...state,
-                minValue: action.newInputMinValue
+                minValue: action.newInputMinValue,
+                scoreValue: action.newInputMinValue
             }
         }
         case ACTION_TYPE.CHANGE_MAIN_DISPLAY: {

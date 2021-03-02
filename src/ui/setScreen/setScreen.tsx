@@ -11,6 +11,7 @@ export function SetScreen() {
     const minValue = useSelector<RootStateStoreType, number>(state => state.counterData.minValue)
     const dispatch = useDispatch() // custom dispatch from action.ts
 
+
     const readInputMaxValue = (e: ChangeEvent<HTMLInputElement>) => {
         const value = e.currentTarget.valueAsNumber
         dispatch(changeInputMaxValueAC(value))
